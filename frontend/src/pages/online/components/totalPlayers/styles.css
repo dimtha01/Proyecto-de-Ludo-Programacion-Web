@@ -1,0 +1,49 @@
+.page-total-players-section {
+  align-items: center;
+  animation: fadeInLeft 500ms ease both;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 0;
+  width: 75%;
+}
+
+.page-total-players-section h2 {
+  margin-bottom: 20px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.page-total-players-button,
+.page-total-players-friends {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.page-total-players-button:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.page-total-players-button span {
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  display: flex;
+  font-size: 25px;
+  height: 35px;
+  justify-content: center;
+  width: 35px;
+}
+
+.page-total-players-friends .icon-wrapper {
+  height: 35px;
+  width: 35px;
+}

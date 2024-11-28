@@ -1,0 +1,12 @@
+.game-options-button {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  height: 35px;
+  justify-content: center;
+  width: 35px;
+}
+
+.game-options-button .icon-wrapper {
+  width: 60%;
+}

@@ -1,0 +1,52 @@
+.game-offline {
+  align-items: center;
+  animation: fadeInLeft 500ms ease both;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  width: 80%;
+}
+
+.game-offline-players {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-offline-player {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.game-offline-play {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+.game-offline-play span {
+  height: 30px;
+  width: 30px;
+}
+
+.game-offline-player-bot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 12px;
+}

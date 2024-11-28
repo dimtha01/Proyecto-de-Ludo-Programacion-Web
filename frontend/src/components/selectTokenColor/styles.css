@@ -1,0 +1,31 @@
+.game-offline-token-wrapper {
+  height: 35px;
+  position: relative;
+  width: 35px;
+}
+
+.game-offline-token-color {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+.game-offline-token-color:disabled,
+.game-offline-token-color[disabled] {
+  cursor: auto;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.game-offline-token-color .game-token-piece {
+  left: 15%;
+  top: 15%;
+}
+
+.game-offline-token-color:disabled .game-token-piece,
+.game-offline-token-color[disabled] .game-token-piece {
+  filter: grayscale(1);
+  opacity: 0.5;
+}

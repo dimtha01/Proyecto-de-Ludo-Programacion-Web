@@ -1,0 +1,180 @@
+.game-over-wrapper {
+  background: rgb(0 0 0 / 80%);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-wrapper img {
+  background-color: #e4e4e4;
+}
+
+.game-over-options {
+  animation: fadeInLeft 500ms ease both;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.game-over-container .ribbon {
+  top: -50px;
+  position: absolute;
+}
+
+.game-over-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 35px 0 15px 0;
+  border-radius: 5px;
+  background: rgb(160, 34, 107);
+  background: radial-gradient(
+    circle,
+    rgba(160, 34, 107, 1) 16%,
+    rgba(95, 8, 98, 1) 100%
+  );
+  box-shadow: black 0px 0px 0px 3px, #be835d 0px 0px 0px 6px,
+    rgb(255, 217, 19) 0px 0px 0px 9px;
+}
+
+.game-over-container-others {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 85%;
+}
+
+.game-over-container-winner {
+  align-items: center;
+  background-color: #90367c;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 15px;
+  padding: 20px 0;
+  width: 85%;
+}
+
+.game-over-container-winner-photo {
+  position: relative;
+}
+
+.game-over-container-winner-photo svg {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: -36px;
+  left: 5px;
+  z-index: 1;
+}
+
+.game-over-container-winner-photo img {
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  height: 55px;
+  width: 55px;
+}
+
+.game-over-container-winner-photo span {
+  position: absolute;
+  color: yellow;
+  font-size: 18px;
+  right: -30px;
+}
+
+.game-over-container-winner-name {
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 5px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0px 0px 1px black;
+  text-transform: uppercase;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.game-over-container-player {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+}
+
+.game-over-container-player img {
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  height: 35px;
+  width: 35px;
+}
+
+.game-over-container-player span {
+  color: white;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.game-over-container-player div {
+  font-size: 12px;
+  margin-top: 5px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 0px 0px 1px black;
+  white-space: nowrap;
+  font-weight: bold;
+  width: 80px;
+}
+
+.game-over-color.red {
+  color: var(--game-red);
+}
+
+.game-over-color.blue {
+  color: var(--game-blue);
+}
+
+.game-over-color.yellow {
+  color: var(--game-yellow);
+}
+
+.game-over-color.green {
+  color: var(--game-green);
+}
+
+.game-over-buttons {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.game-over-buttons .button {
+  align-items: center;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+}
+
+.game-over-buttons .icon-wrapper {
+  width: 60%;
+}

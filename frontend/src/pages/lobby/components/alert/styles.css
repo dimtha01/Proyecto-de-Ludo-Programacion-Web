@@ -1,0 +1,21 @@
+.lobby-alert {
+  align-items: center;
+  background-color: #fff3cd;
+  border-radius: 10px;
+  border: 2px solid #ffeeba;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  color: #856404;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  width: 80%;
+}
+
+.lobby-alert .icon-wrapper {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-right: 5px;
+  width: 40px;
+}

@@ -1,0 +1,59 @@
+.page-matchmaking-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-matchmaking-image-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.page-matchmaking-image-loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 60%);
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-matchmaking-image-loading .lds-ring {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
+}
+
+.page-matchmaking-image-loading .lds-ring div {
+  height: 100%;
+  width: 100%;
+}
+
+.page-matchmaking-image {
+  background-color: #e4e4e4;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  height: 50px;
+  width: 50px;
+}
+
+.page-matchmaking-avatar-name {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-transform: 0px 0px 1px black;
+  white-space: nowrap;
+  width: 100px;
+}

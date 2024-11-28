@@ -1,0 +1,41 @@
+.page-matchmaking-players-info {
+  animation: bounceIn 0.5s both;
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 20px;
+  width: 80%;
+}
+
+.page-matchmaking-two-players {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-matchmaking-vs {
+  font-size: 40px;
+  font-style: italic;
+  color: #fdf182;
+  font-weight: bold;
+  background: #e6b31e;
+  background: linear-gradient(to top, #e6b31e 34%, #fdf182 57%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #7f580d;
+}
+
+.page-matchmaking-four-players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-matchmaking-four-players-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+}

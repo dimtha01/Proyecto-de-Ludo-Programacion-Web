@@ -1,0 +1,60 @@
+.game-dice {
+  --point: radial-gradient(circle, black 35%, rgba(255, 255, 255, 0) 50%);
+}
+
+.game-dice {
+  background-color: white;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+}
+
+.game-dice.animate {
+  animation: bounceIn 1s both;
+}
+
+.game-dice::after {
+  background-repeat: no-repeat;
+  background-size: 30% 30%;
+  content: "";
+  filter: drop-shadow(0 0 1px black);
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.game-dice.dice-1::after {
+  background-image: var(--point);
+  background-position: 50% 50%;
+}
+
+.game-dice.dice-2::after {
+  background-image: var(--point), var(--point);
+  background-position: 90% 10%, 10% 90%;
+}
+
+.game-dice.dice-3::after {
+  background-image: var(--point), var(--point), var(--point);
+  background-position: 90% 10%, 50% 50%, 10% 90%;
+}
+
+.game-dice.dice-4::after {
+  background-image: var(--point), var(--point), var(--point), var(--point);
+  background-position: 10% 90%, 10% 10%, 90% 10%, 90% 90%;
+}
+
+.game-dice.dice-5::after {
+  background-image: var(--point), var(--point), var(--point), var(--point),
+    var(--point);
+  background-position: 10% 90%, 10% 10%, 50% 50%, 90% 10%, 90% 90%;
+}
+
+.game-dice.dice-6::after {
+  background-image: var(--point), var(--point), var(--point), var(--point),
+    var(--point), var(--point);
+  background-position: 10% 90%, 10% 10%, 10% 50%, 90% 10%, 90% 90%, 90% 50%;
+}

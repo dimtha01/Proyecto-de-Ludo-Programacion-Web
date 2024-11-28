@@ -1,0 +1,50 @@
+.game-profile {
+  position: relative;
+  width: 100%;
+}
+
+.game-profile-dice-name {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.game-profile.bottom .game-profile-dice-name {
+  flex-direction: column-reverse;
+}
+
+.game-profile.right .game-profile-dice-name {
+  align-items: flex-end;
+}
+
+.game-profile.right .game-profile-dices {
+  flex-direction: row-reverse;
+}
+
+.game-profile.right .game-profile-name-dice {
+  justify-content: flex-end;
+}
+
+.game-profile.right .game-profile-name {
+  text-align: right;
+}
+
+.game-profile.bottom .game-profile-dice {
+  top: 30px;
+}
+
+.game-profile.bottom .game-profile-ranking {
+  top: 36px;
+}
+
+.game-profile.top .game-profile-ranking {
+  top: 0;
+}
+
+.game-profile.left .game-profile-ranking {
+  left: 55px;
+}
+
+.game-profile.right .game-profile-ranking {
+  right: 55px;
+}

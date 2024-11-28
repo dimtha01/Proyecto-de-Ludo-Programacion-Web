@@ -1,0 +1,74 @@
+.game-tooltip {
+  animation: bounceIn 0.5s both;
+  border-radius: 5px;
+  box-shadow: -2px 4px 14px 0px #090909;
+  display: flex;
+  gap: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 10;
+}
+
+.game-tooltip.blue {
+  background-color: var(--game-blue);
+}
+
+.game-tooltip.red {
+  background-color: var(--game-red);
+}
+
+.game-tooltip.green {
+  background-color: var(--game-green);
+}
+
+.game-tooltip.yellow {
+  background-color: var(--game-yellow);
+}
+
+.game-tooltip button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.game-tooltip::after {
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  height: 0;
+  left: 40%;
+  position: absolute;
+  top: 100%;
+  width: 0;
+}
+
+.game-tooltip.left:after {
+  left: 2%;
+}
+
+.game-tooltip.top:after {
+  top: -40%;
+  transform: scale(-1);
+}
+
+.game-tooltip.right:after {
+  left: 73%;
+}
+
+.game-tooltip.red:after {
+  border-color: var(--game-red) transparent transparent transparent;
+}
+
+.game-tooltip.blue:after {
+  border-color: var(--game-blue) transparent transparent transparent;
+}
+
+.game-tooltip.yellow:after {
+  border-color: var(--game-yellow) transparent transparent transparent;
+}
+
+.game-tooltip.green:after {
+  border-color: var(--game-green) transparent transparent transparent;
+}

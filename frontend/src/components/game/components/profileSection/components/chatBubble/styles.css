@@ -1,0 +1,85 @@
+.game-chat-bubble {
+  position: absolute;
+  z-index: 5;
+}
+
+.game-chat-bubble-container {
+  position: relative;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  color: black;
+  display: flex;
+  font-family: Arial;
+  font-size: 15px;
+  height: 47px;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+  width: 100px;
+}
+
+.game-chat-bubble-container.show {
+  animation: bounceIn 0.5s both;
+}
+
+.game-chat-bubble-container.hide {
+  animation: bounceOut 0.5s both;
+}
+
+.game-chat-bubble-container.emoji {
+  font-size: 28px;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.game-chat-bubble-container::after {
+  border-color: white transparent;
+  border-style: solid;
+  border-width: 10px 10px 0;
+  bottom: -9px;
+  content: "";
+  display: block;
+  left: 23%;
+  margin-left: -10px;
+  position: absolute;
+  width: 0;
+  z-index: 1;
+}
+
+.game-chat-bubble.bottom.left {
+  left: 0;
+  top: -30px;
+}
+
+.game-chat-bubble.bottom.right {
+  right: 0;
+  top: -30px;
+}
+
+.game-chat-bubble.top.left {
+  left: 0;
+  top: 65px;
+}
+
+.game-chat-bubble.top.right {
+  right: 0;
+  top: 65px;
+}
+
+.game-chat-bubble.bottom.right .game-chat-bubble-container::after {
+  left: 73%;
+}
+
+.game-chat-bubble.top.left .game-chat-bubble-container::after,
+.game-chat-bubble.top.right .game-chat-bubble-container::after {
+  border-width: 0 10px 10px;
+  bottom: unset;
+  top: -9px;
+}
+
+.game-chat-bubble.top.right .game-chat-bubble-container::after {
+  left: 73%;
+}

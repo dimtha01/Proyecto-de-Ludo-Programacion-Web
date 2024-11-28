@@ -1,0 +1,10 @@
+.game-profile-section {
+  display: flex;
+  margin: 10px;
+  width: 100%;
+}
+
+.game-profile-section-container {
+  padding: 5px 10px;
+  width: 50%;
+}

@@ -1,0 +1,552 @@
+/*
+  Para crear el board se ha realizado los siguiente:
+  * En la clase principal game-board se establece las
+  celdas de salida y las seguras, por defecto estás quedan detras de la grilla.
+  * En el before de la clase game-board se crea la grilla, que queda encima de las celdas de llegada.
+  * En el after de la clase game-board se crea los 4 elementos de salida,
+  los elementos de llegada y las estrellas, que quedan por encima de la grilla.
+  Es decir que existen tres capas.
+
+  Los valores de -size-tile y --size-board son calculados en JS y pasados a CSS,
+  los valores son calculados en relacioón a estos valores, permitiendo que sea responsive.
+*/
+.game-board {
+  /* Color de fondo de la base del punto de inicio */
+  --nest-grid-bg: white;
+  --nest-grid-color: black;
+  --nest-start-bg: #c4c3c2;
+  --nest-bottom-left-bg: var(--game-red);
+  --nest-top-left-bg: var(--game-green);
+  --nest-top-right-bg: var(--game-yellow);
+  --nest-bottom-right-bg: var(--game-blue);
+  /* Tamaño del contenedor principal del punto de inicio */
+  --nest-size: calc(var(--size-tile) * 6);
+  /* Para el tamaño de los circulos del punto de inicio */
+  --nest-size-circle: calc(var(--size-tile) * 3);
+  /* Color del container del punto de inicio */
+  --nest-container-bg: rgba(0, 0, 0, 0.3);
+  /* Color de los círculos en el punto de inicio */
+  --nest-circle-bg: rgba(0, 0, 0, 0.5);
+  --start-bg: white;
+  /* Tamaño para el contaner del punto de inicio */
+  --nest-size-container: calc(var(--size-tile) * 4.5);
+  /* Posición del container del punto de inicio */
+  --nest-container-pos: calc(var(--size-tile) / 1.4);
+  /* Para los posiciones de los circulos en el punto de inicio */
+  --nest-circle-position-1-x: calc(var(--size-tile) / 2);
+  --nest-circle-position-1-y: calc(var(--size-tile) / 2);
+
+  --nest-circle-position-2-x: calc(calc(var(--size-tile) / 2) * 5);
+  --nest-circle-position-2-y: calc(var(--size-tile) / 2);
+
+  --nest-circle-position-3-x: calc(var(--size-tile) / 2);
+  --nest-circle-position-3-y: calc(calc(var(--size-tile) / 2) * 5);
+
+  --nest-circle-position-4-x: calc(calc(var(--size-tile) / 2) * 5);
+  --nest-circle-position-4-y: calc(calc(var(--size-tile) / 2) * 5);
+  /* Los valores que se pondrá en el background-size para los circulos de inicio */
+  --nest-size-elements: var(--nest-size-circle) var(--nest-size-circle),
+    var(--nest-size-circle) var(--nest-size-circle),
+    var(--nest-size-circle) var(--nest-size-circle),
+    var(--nest-size-circle) var(--nest-size-circle),
+    var(--nest-size-container) var(--nest-size-container),
+    var(--nest-size) var(--nest-size);
+
+  /* Incremento de posición para los demás puntos de salida. */
+  /* Se cálculo en primer punto de salida (top-left (0, 0)), con este valor se 
+  hace la posición de los demás multiplcando el valor cunando se requeire */
+  --nest-increase-position: calc(var(--size-tile) * 9);
+
+  /* Para el punto de salida de la parte superior izquierda */
+  --nest-top-left: radial-gradient(
+      circle,
+      var(--nest-circle-bg) 30%,
+      rgba(0, 0, 0, 0) 0
+    ),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    linear-gradient(var(--nest-container-bg), var(--nest-container-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg));
+
+  /* Valor que se pone en el background-position para las posiciones de cada elemento */
+  --nest-top-left-position: var(--nest-circle-position-1-x)
+      var(--nest-circle-position-1-y),
+    var(--nest-circle-position-2-x) var(--nest-circle-position-2-y),
+    var(--nest-circle-position-3-x) var(--nest-circle-position-3-y),
+    var(--nest-circle-position-4-x) var(--nest-circle-position-4-y),
+    var(--nest-container-pos) var(--nest-container-pos), 0 0;
+
+  /* Para el punto de salida de la parte superior derecha */
+  --nest-top-right: radial-gradient(
+      circle,
+      var(--nest-circle-bg) 30%,
+      rgba(0, 0, 0, 0) 0
+    ),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    linear-gradient(var(--nest-container-bg), var(--nest-container-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg));
+
+  --nest-top-right-position: calc(
+        var(--nest-circle-position-1-x) + var(--nest-increase-position)
+      )
+      var(--nest-circle-position-1-y),
+    calc(var(--nest-circle-position-2-x) + var(--nest-increase-position))
+      var(--nest-circle-position-2-y),
+    calc(var(--nest-circle-position-3-x) + var(--nest-increase-position))
+      var(--nest-circle-position-3-y),
+    calc(var(--nest-circle-position-4-x) + var(--nest-increase-position))
+      var(--nest-circle-position-4-y),
+    calc(var(--nest-container-pos) + var(--nest-increase-position))
+      var(--nest-container-pos),
+    var(--nest-increase-position) 0;
+
+  /* Para el punto de salida de la parte abajo izquierda */
+  --nest-bottom-left: radial-gradient(
+      circle,
+      var(--nest-circle-bg) 30%,
+      rgba(0, 0, 0, 0) 0
+    ),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    linear-gradient(var(--nest-container-bg), var(--nest-container-bg)),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg));
+
+  --nest-bottom-left-position: var(--nest-circle-position-1-x)
+      calc(var(--nest-circle-position-1-y) + var(--nest-increase-position)),
+    var(--nest-circle-position-2-x)
+      calc(var(--nest-circle-position-2-y) + var(--nest-increase-position)),
+    var(--nest-circle-position-3-x)
+      calc(var(--nest-circle-position-3-y) + var(--nest-increase-position)),
+    var(--nest-circle-position-4-x)
+      calc(var(--nest-circle-position-4-y) + var(--nest-increase-position)),
+    var(--nest-container-pos)
+      calc(var(--nest-container-pos) + var(--nest-increase-position)),
+    0 var(--nest-increase-position);
+
+  /* Para el punto de salida de la parte abajo derecha */
+  --nest-bottom-right: radial-gradient(
+      circle,
+      var(--nest-circle-bg) 30%,
+      rgba(0, 0, 0, 0) 0
+    ),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    radial-gradient(circle, var(--nest-circle-bg) 30%, rgba(0, 0, 0, 0) 0),
+    linear-gradient(var(--nest-container-bg), var(--nest-container-bg)),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg));
+
+  --nest-bottom-right-position: calc(
+        var(--nest-circle-position-1-x) + var(--nest-increase-position)
+      )
+      calc(var(--nest-circle-position-1-y) + var(--nest-increase-position)),
+    calc(var(--nest-circle-position-2-x) + var(--nest-increase-position))
+      calc(var(--nest-circle-position-2-y) + var(--nest-increase-position)),
+    calc(var(--nest-circle-position-3-x) + var(--nest-increase-position))
+      calc(var(--nest-circle-position-3-y) + var(--nest-increase-position)),
+    calc(var(--nest-circle-position-4-x) + var(--nest-increase-position))
+      calc(var(--nest-circle-position-4-y) + var(--nest-increase-position)),
+    calc(var(--nest-container-pos) + var(--nest-increase-position))
+      calc(var(--nest-container-pos) + var(--nest-increase-position)),
+    var(--nest-increase-position) var(--nest-increase-position);
+
+  /* Para los elementos de la meta */
+  /* Correponde a los triángulos a donde llegan los tokens al final */
+  --finish-elements-size-value: calc(var(--size-tile) * 3);
+  --finish-elements-size-value-half: calc(
+    var(--finish-elements-size-value) / 2
+  );
+
+  --finish-elements-position-value: calc(var(--size-tile) * 6);
+
+  --finish-elements-position-value-half: calc(
+    var(--finish-elements-position-value) +
+      var(--finish-elements-size-value-half)
+  );
+
+  /*
+    Los dos primeros linear-gradient corresponden al triangulo de abajo, en este
+    caso se crean dos triangulos...
+    El tercer linear-gradient correspnde al triángulo de la izquierda
+    El cuarto linear-gradient es el tringulo de arriba
+    Y el último corresponde al de la derecha
+    */
+  --finish-elements: linear-gradient(
+      to left bottom,
+      transparent 50%,
+      var(--nest-bottom-left-bg) 0
+    ),
+    linear-gradient(
+      to right bottom,
+      transparent 50%,
+      var(--nest-bottom-left-bg) 0
+    ),
+    linear-gradient(to left bottom, transparent 50%, var(--nest-top-left-bg) 0),
+    linear-gradient(
+      to right bottom,
+      var(--nest-top-right-bg) 50%,
+      transparent 0
+    ),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg));
+
+  /*
+    El valor correspondiente al tamaño de cada triángulo,
+    debido a que para el primer triangulo son dos se establece la mitad para cada uno,
+    este valor siempre es en par (ancho, alto), por ello para el primero existen 4 valores,
+    para los demás son dos, por ello existen 10 valores.
+  */
+  --finish-elements-size: var(--finish-elements-size-value-half)
+      var(--finish-elements-size-value-half),
+    var(--finish-elements-size-value-half)
+      var(--finish-elements-size-value-half),
+    var(--finish-elements-size-value) var(--finish-elements-size-value),
+    var(--finish-elements-size-value) var(--finish-elements-size-value),
+    var(--finish-elements-size-value) var(--finish-elements-size-value);
+
+  /*
+    Para la posición de los trinagulos, son coordenadas (x,y) en pixeles, 
+    al igual que el size se tienen 10 por que el primero triangulo es la combinación de 
+    trinagulos.
+  */
+  --finish-elements-position: var(--finish-elements-position-value-half)
+      var(--finish-elements-position-value-half),
+    var(--finish-elements-position-value)
+      var(--finish-elements-position-value-half),
+    var(--finish-elements-position-value) var(--finish-elements-position-value),
+    var(--finish-elements-position-value) var(--finish-elements-position-value),
+    var(--finish-elements-position-value) var(--finish-elements-position-value);
+
+  /* Para los ítems finales superior */
+  /*
+    ítems reacionados a la celdas de salida la priumera celda,
+    tiene un color diferente en este caso determinado que es una zona segura,
+    los demás colores dependen del giro del tablero...
+  */
+  --finish-row-base: calc(var(--size-tile) * 7);
+  --finish-row-top: linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg));
+
+  --finish-row-top-position: var(--finish-row-base) 0,
+    var(--finish-row-base) var(--size-tile),
+    var(--finish-row-base) calc(var(--size-tile) * 2),
+    var(--finish-row-base) calc(var(--size-tile) * 3),
+    var(--finish-row-base) calc(var(--size-tile) * 4),
+    var(--finish-row-base) calc(var(--size-tile) * 5);
+
+  /* Para las celdas de salida de la izquierda... */
+  --finish-row-left: linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg));
+
+  --finish-row-left-position: 0 var(--finish-row-base),
+    var(--size-tile) var(--finish-row-base),
+    calc(var(--size-tile) * 2) var(--finish-row-base),
+    calc(var(--size-tile) * 3) var(--finish-row-base),
+    calc(var(--size-tile) * 4) var(--finish-row-base),
+    calc(var(--size-tile) * 5) var(--finish-row-base);
+
+  /* Para las celdas de salida de la derecha... */
+  --finish-row-right: linear-gradient(
+      var(--nest-bottom-right-bg),
+      var(--nest-bottom-right-bg)
+    ),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg)),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg)),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg)),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg)),
+    linear-gradient(var(--nest-start-bg), var(--nest-start-bg));
+
+  --finish-row-right-position: calc(var(--size-tile) * 9) var(--finish-row-base),
+    calc(var(--size-tile) * 10) var(--finish-row-base),
+    calc(var(--size-tile) * 11) var(--finish-row-base),
+    calc(var(--size-tile) * 12) var(--finish-row-base),
+    calc(var(--size-tile) * 13) var(--finish-row-base),
+    calc(var(--size-tile) * 14) var(--finish-row-base);
+
+  /* Para las celdas de salida de abajo... */
+  --finish-bottom-right: linear-gradient(
+      var(--nest-bottom-left-bg),
+      var(--nest-bottom-left-bg)
+    ),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg)),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg)),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg)),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg)),
+    linear-gradient(var(--nest-start-bg), var(--nest-start-bg));
+
+  --finish-bottom-right-position: var(--finish-row-base)
+      calc(var(--size-tile) * 9),
+    var(--finish-row-base) calc(var(--size-tile) * 10),
+    var(--finish-row-base) calc(var(--size-tile) * 11),
+    var(--finish-row-base) calc(var(--size-tile) * 12),
+    var(--finish-row-base) calc(var(--size-tile) * 13),
+    var(--finish-row-base) calc(var(--size-tile) * 14);
+
+  /* Para las zonas seguras */
+  /* Mostrará  las celdas que son seguras */
+  --safe-points: linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-top-right-bg), var(--nest-top-right-bg)),
+    linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-bottom-right-bg), var(--nest-bottom-right-bg)),
+    linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-bottom-left-bg), var(--nest-bottom-left-bg)),
+    linear-gradient(var(--nest-start-bg), var(--nest-start-bg)),
+    linear-gradient(var(--nest-top-left-bg), var(--nest-top-left-bg));
+
+  --safe-points-position: calc(var(--size-tile) * 6) calc(var(--size-tile) * 2),
+    calc(var(--size-tile) * 8) var(--size-tile),
+    calc(var(--size-tile) * 12) calc(var(--size-tile) * 6),
+    calc(var(--size-tile) * 13) calc(var(--size-tile) * 8),
+    calc(var(--size-tile) * 8) calc(var(--size-tile) * 12),
+    calc(var(--size-tile) * 6) calc(var(--size-tile) * 13),
+    calc(var(--size-tile) * 2) calc(var(--size-tile) * 8),
+    var(--size-tile) calc(var(--size-tile) * 6);
+
+  /* Para las estrellas... */
+  /* Para crear las estrellas que se mostrarán en las celdas seguras */
+  --start: linear-gradient(to left bottom, transparent 50%, var(--start-bg) 0),
+    linear-gradient(to right bottom, transparent 50%, var(--start-bg) 0),
+    linear-gradient(to left top, transparent 50%, var(--start-bg) 0),
+    linear-gradient(to right top, transparent 50%, var(--start-bg) 0);
+
+  --start-center-x-1: calc(var(--size-tile) * 0.46);
+  --start-center-x-2: calc(var(--size-tile) * 0.16);
+
+  --start-center-y-1: calc(var(--size-tile) * 0.2);
+  --start-center-y-2: calc(var(--size-tile) * 0.35);
+
+  --start-size-x: calc(var(--size-tile) * 0.3);
+  --start-size-y: calc(var(--size-tile) * 0.4);
+
+  --safe-stars-base-size: var(--start-size-x) var(--start-size-y),
+    var(--start-size-x) var(--start-size-y),
+    var(--start-size-x) var(--start-size-y),
+    var(--start-size-x) var(--start-size-y);
+
+  --safe-starts: var(--start), var(--start), var(--start), var(--start),
+    var(--start), var(--start), var(--start), var(--start);
+
+  /*
+    Se tienen tienen en total 12 estrellas para 12 celdas seguras,
+    en este caso se calcula la posición para cada estrella...
+  */
+  --safe-starts-position-1: calc(
+        calc(var(--size-tile) * 6) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 2) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 6) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 2) + var(--start-center-y-1)),
+    /* nuevos */ calc(calc(var(--size-tile) * 6) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 2) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 6) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 2) + var(--start-center-y-2));
+
+  --safe-starts-position-2: calc(
+        calc(var(--size-tile) * 8) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 1) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 1) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 1) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 1) + var(--start-center-y-2));
+
+  --safe-starts-position-3: calc(
+        calc(var(--size-tile) * 12) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 12) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 12) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 12) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-2));
+
+  --safe-starts-position-4: calc(
+        calc(var(--size-tile) * 13) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 13) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 13) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 13) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-2));
+
+  --safe-starts-position-5: calc(
+        calc(var(--size-tile) * 8) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 12) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 12) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 12) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 8) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 12) + var(--start-center-y-2));
+
+  --safe-starts-position-6: calc(
+        calc(var(--size-tile) * 6) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 13) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 6) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 13) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 6) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 13) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 6) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 13) + var(--start-center-y-2));
+
+  --safe-starts-position-7: calc(
+        calc(var(--size-tile) * 2) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 2) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 2) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 2) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 8) + var(--start-center-y-2));
+
+  --safe-starts-position-8: calc(
+        calc(var(--size-tile) * 1) + var(--start-center-x-1)
+      )
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 1) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-1)),
+    calc(calc(var(--size-tile) * 1) + var(--start-center-x-1))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-2)),
+    calc(calc(var(--size-tile) * 1) + var(--start-center-x-2))
+      calc(calc(var(--size-tile) * 6) + var(--start-center-y-2));
+
+  --safe-starts-position: var(--safe-starts-position-1),
+    var(--safe-starts-position-2), var(--safe-starts-position-3),
+    var(--safe-starts-position-4), var(--safe-starts-position-5),
+    var(--safe-starts-position-6), var(--safe-starts-position-7),
+    var(--safe-starts-position-8);
+
+  --safe-stars-size: var(--safe-stars-base-size), var(--safe-stars-base-size),
+    var(--safe-stars-base-size), var(--safe-stars-base-size),
+    var(--safe-stars-base-size), var(--safe-stars-base-size),
+    var(--safe-stars-base-size), var(--safe-stars-base-size);
+}
+
+.game-board {
+  background-color: var(--nest-grid-bg);
+  border-radius: 10px;
+  box-shadow: var(--nest-grid-color) 0px 0px 0px 3px, #be835d 0px 0px 0px 6px,
+    rgb(255, 217, 19) 0px 0px 0px 9px;
+  height: var(--size-board);
+  position: relative;
+  width: var(--size-board);
+
+  /* Mestra las celdas de salida y las celda seguras */
+  background-image: var(--finish-row-top), var(--finish-row-left),
+    var(--finish-row-right), var(--finish-bottom-right), var(--safe-points);
+
+  background-size: var(--size-tile) var(--size-tile);
+
+  background-position: var(--finish-row-top-position),
+    var(--finish-row-left-position), var(--finish-row-right-position),
+    var(--finish-bottom-right-position), var(--safe-points-position);
+
+  background-repeat: no-repeat;
+}
+
+.game-board::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(var(--size-tile) - 1px),
+      var(--nest-grid-color) calc(var(--size-tile) - 1px),
+      var(--nest-grid-color) var(--size-tile)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(var(--size-tile) - 1px),
+      var(--nest-grid-color) calc(var(--size-tile) - 1px),
+      var(--nest-grid-color) var(--size-tile)
+    );
+}
+
+.game-board::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 10px;
+
+  /*
+    * Muestra los 4 elementos de salida.
+    * Los 4 elementos de llegada (puntos finales).
+    * Las estrellas.
+  */
+  background-image: var(--safe-starts), var(--finish-elements),
+    var(--nest-top-left), var(--nest-top-right), var(--nest-bottom-left),
+    var(--nest-bottom-right);
+
+  background-size: var(--safe-stars-size), var(--finish-elements-size),
+    var(--nest-size-elements), var(--nest-size-elements),
+    var(--nest-size-elements), var(--nest-size-elements);
+
+  background-position: var(--safe-starts-position),
+    var(--finish-elements-position), var(--nest-top-left-position),
+    var(--nest-top-right-position), var(--nest-bottom-left-position),
+    var(--nest-bottom-right-position);
+
+  background-repeat: no-repeat;
+}
+
+/*
+  Clases que cambian los colores del tablero, lo rotan.
+  Se toma desde el punto de salida de la parte inferior abajo,
+  sigue con el de la derecha de abajo, derecha arriba y izquieda arriba.
+  el valor por defecto del tablero es:
+  rbyg -> Rojo, azul, amarillo y verde, no es necesaria la clase ya que
+  las variables de css tienen esos valores inicialmemte
+  Los demás son:
+
+  * RGYB -> Rojo, verde, amarillo y azul, color por defecto...
+  * BRGY -> Azul, Rojom verde y amarillo. *
+  * YBRG -> Amarillo, azul, rojo y verde *
+  * GYBR -> Verde, amarillo, azul y rojo...
+*/
+.game-board.BRGY {
+  --nest-bottom-left-bg: var(--game-blue);
+  --nest-top-left-bg: var(--game-red);
+  --nest-top-right-bg: var(--game-green);
+  --nest-bottom-right-bg: var(--game-yellow);
+}
+
+.game-board.YBRG {
+  --nest-bottom-left-bg: var(--game-yellow);
+  --nest-top-left-bg: var(--game-blue);
+  --nest-top-right-bg: var(--game-red);
+  --nest-bottom-right-bg: var(--game-green);
+}
+
+.game-board.GYBR {
+  --nest-bottom-left-bg: var(--game-green);
+  --nest-top-left-bg: var(--game-yellow);
+  --nest-top-right-bg: var(--game-blue);
+  --nest-bottom-right-bg: var(--game-red);
+}

@@ -1,0 +1,88 @@
+.game-token-piece {
+  transition: all 150ms ease;
+  left: 0;
+  top: 0;
+  position: absolute;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  /* Para forzar el repintado en safari */
+  transform: translateZ(0);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset,
+    rgba(6, 24, 44, 0.4) 0px 0px 0px 1px, rgba(6, 24, 44, 0.65) 0px 4px 4px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+/* Rendriza la parte blanca del token */
+.game-token-piece::before {
+  content: "";
+  border-radius: 50%;
+  background-color: white;
+  height: 60%;
+  left: 18%;
+  position: absolute;
+  top: 13%;
+  width: 65%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.game-token-piece::after {
+  content: "\2605";
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  font-size: 12px;
+  left: 25%;
+  top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Establece los colores para cada token */
+.game-token-piece.red {
+  background-color: var(--game-red);
+}
+
+.game-token-piece.red::after {
+  color: var(--game-red);
+}
+
+.game-token-piece.blue {
+  background-color: var(--game-blue);
+}
+
+.game-token-piece.blue::after {
+  color: var(--game-blue);
+}
+
+.game-token-piece.green {
+  background-color: var(--game-green);
+}
+
+.game-token-piece.green::after {
+  color: var(--game-green);
+}
+
+.game-token-piece.yellow {
+  background-color: var(--game-yellow);
+}
+
+.game-token-piece.yellow::after {
+  color: var(--game-yellow);
+}
+
+/* Estilo para ver el index del token no saldrá en producción */
+.game-token-piece span {
+  align-items: center;
+  background: black;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  opacity: 0.7;
+  position: absolute;
+  top: -20px;
+}

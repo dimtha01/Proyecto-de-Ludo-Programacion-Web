@@ -1,0 +1,22 @@
+.lobby-options-toolbar {
+  align-items: center;
+  animation: bounceIn 800ms ease both;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  width: 50%;
+}
+
+.lobby-options-toolbar .button {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
+}
+
+.lobby-options-toolbar .button .icon-wrapper {
+  width: 30px;
+}

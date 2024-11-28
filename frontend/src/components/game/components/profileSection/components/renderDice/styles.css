@@ -1,0 +1,92 @@
+.game-profile-dice {
+  animation: bounceIn 1s both;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  left: 62px;
+  top: -5px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00487f;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.game-profile-dice::after {
+  border-style: solid;
+  border-width: 10px;
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0;
+  border-color: #00487f transparent transparent transparent;
+  transform: rotate(90deg);
+  left: -30%;
+  top: 35%;
+}
+
+.game-profile-dice.hide {
+  animation: bounceOut 0.6s both;
+}
+
+/* CSS Especial para firefox ya que tiene un issue con las animaciones */
+@-moz-document url-prefix() {
+  @supports (animation: calc(0s)) {
+    .game-profile-dice,
+    .game-profile-dice.hide {
+      animation: none;
+    }
+
+    .game-profile-dice {
+      opacity: 1;
+      transition: all 500ms ease;
+    }
+
+    .game-profile-dice.hide {
+      opacity: 0;
+    }
+  }
+}
+
+.game-profile.right .game-profile-dice::after {
+  transform: rotate(-90deg);
+  left: auto;
+  right: -30%;
+}
+
+.game-profile-dice-button {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  background: transparent;
+  /* border: none; */
+  cursor: pointer;
+  height: 45px;
+  width: 45px;
+}
+
+.game-profile-dice-button .dice {
+  position: absolute;
+  left: -7px;
+  top: -8px;
+  z-index: 10;
+}
+
+.game-profile-dice .icon-arrow {
+  animation: move-arrow 0.5s infinite alternate;
+  filter: drop-shadow(0px -2px 1px black);
+  height: 50px;
+  position: absolute;
+  top: -40px;
+  width: 50px;
+  z-index: 1;
+}
+
+@keyframes move-arrow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}

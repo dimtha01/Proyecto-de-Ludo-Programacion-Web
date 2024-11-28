@@ -1,0 +1,45 @@
+.page-auth-section {
+  align-items: center;
+  animation: fadeInLeft 500ms ease both;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  width: 60%;
+}
+
+.page-auth-title {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.page-auth-social {
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  font-size: 23px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.page-auth-social:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.page-auth-social .icon-wrapper {
+  width: 40px;
+  height: 40px;
+}
+
+.page-auth-social.github {
+  background-color: #4a4a4a;
+}
+
+.page-auth-social.google {
+  background-color: #f44336;
+}

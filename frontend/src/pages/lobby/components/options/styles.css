@@ -1,0 +1,27 @@
+.lobby-options {
+  align-items: center;
+  animation: fadeInLeft 250ms ease both;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: baseline;
+  margin: 40px 0;
+  width: 80%;
+}
+
+.lobby-options .button {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  font-size: 23px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 65%;
+}
+
+.lobby-options .button .icon-wrapper {
+  width: 30px;
+}

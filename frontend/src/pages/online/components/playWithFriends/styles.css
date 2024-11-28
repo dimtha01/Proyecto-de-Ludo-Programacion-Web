@@ -1,0 +1,74 @@
+.page-with-friends-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 80%;
+}
+
+.page-with-friends-section h2 {
+  color: white;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.page-with-friends-form {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  width: 100%;
+}
+
+.page-with-friends-code {
+  border-radius: 10px 0 0 10px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  width: 75%;
+}
+
+.page-with-friends-join {
+  border-radius: 0 10px 10px 0;
+  font-size: 20px;
+  height: 100%;
+  text-transform: uppercase;
+  width: 25%;
+}
+
+.page-with-friends-new-room {
+  border-radius: 10px;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.page-with-friends-new-config {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.page-with-friends-create {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 10px;
+  text-transform: uppercase;
+  width: 80%;
+}
+
+.page-with-friends-create .icon-wrapper {
+  height: 35px;
+  width: 35px;
+}

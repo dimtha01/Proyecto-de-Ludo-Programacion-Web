@@ -1,0 +1,71 @@
+.game-logo {
+  animation: bounceIn 0.8s both;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-logo-name {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.game-logo-dice {
+  position: absolute;
+  width: 100%;
+}
+
+.game-logo-dice .game-dice {
+  position: absolute;
+  top: -30px;
+}
+
+.game-logo-dice .game-dice:first-child {
+  left: -20px;
+  transform: rotate(0deg);
+}
+
+.game-logo-dice .game-dice:nth-child(2) {
+  right: -20px;
+  transform: rotate(0deg);
+}
+
+.game-logo-letters {
+  align-items: center;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+}
+
+.game-logo-letter {
+  font-size: 40px;
+  position: absolute;
+  top: -23px;
+  z-index: 10;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.game-logo-footer {
+  text-transform: uppercase;
+  font-size: 25px;
+  color: #fdf182;
+  font-weight: bold;
+  background: #e6b31e;
+  background: linear-gradient(to top, #e6b31e 34%, #fdf182 57%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #7f580d;
+}

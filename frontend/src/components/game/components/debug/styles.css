@@ -1,0 +1,47 @@
+.game-debug-tile {
+  align-items: center;
+  display: flex;
+  font-size: 11px;
+  font-weight: bold;
+  justify-content: center;
+  position: absolute;
+  text-shadow: white 0px 0px 2px;
+  z-index: 1;
+}
+
+.game-debug-tokens {
+  position: absolute;
+  bottom: 15px;
+}
+
+.game-debug-dice {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.game-debug-dice button {
+  cursor: pointer;
+  font-weight: bold;
+  height: 25px;
+  width: 25px;
+}
+
+.game-debug-selects {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.game-debug-copy {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.game-debug-copy button {
+  cursor: pointer;
+  font-weight: bold;
+}
